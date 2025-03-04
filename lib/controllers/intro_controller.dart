@@ -4,7 +4,7 @@ import 'dart:math';
 
 class IntroController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  var hoverAnimate = false.obs;
+  RxBool hoverAnimate = false.obs;
   late AnimationController rotationController;
   late Animation<double> rotationAnimation;
   late Animation<double> scaleAnimation;

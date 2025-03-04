@@ -24,4 +24,19 @@ class DataRepo {
     DataModel(title: 'Technologies'),
     DataModel(title: 'About me'),
   ];
+  static final List<DataModel> projectData = [
+    DataModel(
+      title: 'Wattvita',
+      content:
+          'A Flutter app for a startup that provides a platform for users to buy and sell used electronic devices.',
+    ),
+    DataModel(
+      title: 'udhariPe',
+      content: 'A Flutter app for managing debts.',
+    ),
+    DataModel(
+      title: 'Chatnet',
+      content: 'A Flutter app for chatting.',
+    ),
+  ];
 }

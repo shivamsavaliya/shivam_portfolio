@@ -16,9 +16,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: ResponsiveLayout.responsiveValue(
-          context: context, desktop: 80, mobile: 50),
+          context: context, desktop: 80, mobile: 50, tablet: 60),
       width: ResponsiveLayout.responsiveValue(
-          context: context, desktop: 200, mobile: 100),
+          context: context, desktop: 200, mobile: 100, tablet: 150),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(40),
           gradient: LinearGradient(colors: AppColors.colorizeColors),
@@ -47,8 +47,8 @@ class CustomButton extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     fontSize: ResponsiveLayout.responsiveValue(
                       context: context,
-                      desktop: 16,
-                      mobile: 8,
+                      desktop: 14,
+                      mobile: 10,
                     ),
                   ),
                 ),
