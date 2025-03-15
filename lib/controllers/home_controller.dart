@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
   final infoWidget = GlobalKey().obs;
   final introWidget = GlobalKey().obs;
+  final techWidget = GlobalKey().obs;
 
   void scrollToInfo(GlobalKey key) {
     Scrollable.ensureVisible(

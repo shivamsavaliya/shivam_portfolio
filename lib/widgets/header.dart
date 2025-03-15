@@ -6,8 +6,10 @@ import '../utils/responsive_layout.dart';
 class Header extends StatelessWidget {
   final VoidCallback? onProjectTap;
   final VoidCallback? onPorfolioTap;
+  final VoidCallback? onTechTap;
 
-  const Header({super.key, this.onProjectTap, this.onPorfolioTap});
+  const Header(
+      {super.key, this.onProjectTap, this.onPorfolioTap, this.onTechTap});
 
   @override
   Widget build(BuildContext context) {

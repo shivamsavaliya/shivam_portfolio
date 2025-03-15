@@ -8,12 +8,11 @@ import 'hover_card.dart';
 class InfoWidget extends StatelessWidget {
   final GlobalKey? scrollKey;
 
-  const InfoWidget({super.key, this.scrollKey});
+  InfoWidget({super.key, this.scrollKey});
 
+  final HomeController controller = HomeController();
   @override
   Widget build(BuildContext context) {
-    HomeController controller = HomeController();
-
     return GridView.builder(
       key: controller.infoWidget.value,
       shrinkWrap: true,
@@ -25,10 +24,11 @@ class InfoWidget extends StatelessWidget {
       ),
       itemCount: DataRepo.projectData.length,
       itemBuilder: (context, index) => HoverCard(
-        key: ValueKey('card_$index'), // Add unique key for each card
+        key: ValueKey('card_$index'),
         scrollKey: index == 0 ? scrollKey : null,
         child: CustomCard(
           title: DataRepo.projectData[index].title,
+          image: '',
         ),
       ),
     );

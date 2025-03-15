@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shivam_portfolio/controllers/home_controller.dart';
 import 'package:shivam_portfolio/utils/app_colors.dart';
 import 'package:shivam_portfolio/widgets/header.dart';
+import 'package:shivam_portfolio/widgets/tech_widget.dart';
 import '../widgets/info_widget.dart';
 import '../widgets/intro_widget.dart';
 import '../utils/responsive_layout.dart';
@@ -33,6 +34,7 @@ class HomeScreen extends StatelessWidget {
               controller.scrollToInfo(controller.infoWidget.value),
           onPorfolioTap: () =>
               controller.scrollToInfo(controller.introWidget.value),
+          onTechTap: () => controller.scrollToInfo(controller.techWidget.value),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       ),
@@ -44,6 +46,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         IntroWidget(scrollKey: controller.introWidget.value),
         InfoWidget(scrollKey: controller.infoWidget.value),
+        TechWidget(scrollKey: controller.techWidget.value),
       ],
     );
   }
@@ -54,6 +57,7 @@ class HomeScreen extends StatelessWidget {
       children: [
         IntroWidget(scrollKey: controller.introWidget.value),
         InfoWidget(scrollKey: controller.infoWidget.value),
+        TechWidget(scrollKey: controller.techWidget.value),
       ],
     );
   }

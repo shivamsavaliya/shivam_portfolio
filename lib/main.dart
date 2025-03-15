@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shivam_portfolio/screens/home_screen.dart';
 import 'package:shivam_portfolio/utils/app_constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-Future<void> main() async {
-  // await dotenv.load(fileName: ".env");
-  // await Supabase.initialize(
-  //   url: AppConstants.url,
-  //   anonKey: AppConstants.anonKey,
-  // );
+void main() async {
+  await dotenv.load(fileName: '.env');
+  await Supabase.initialize(
+    url: AppConstants.url,
+    anonKey: AppConstants.anonKey,
+  );
   runApp(MyApp());
 }
 

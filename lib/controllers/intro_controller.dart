@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:math';
+import 'dart:math' as math;
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class IntroController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -19,7 +23,7 @@ class IntroController extends GetxController
 
     rotationAnimation = Tween<double>(
       begin: 0,
-      end: 2 * pi,
+      end: 2 * math.pi,
     ).animate(rotationController);
 
     scaleAnimation = Tween<double>(
@@ -46,5 +50,18 @@ class IntroController extends GetxController
   void dispose() {
     rotationController.dispose();
     super.dispose();
+  }
+
+  void downloadResume() async {
+    final supabase = Supabase.instance.client;
+    final String fileName = "ShivamResume.pdf";
+    final String fileUrl =
+        supabase.storage.from("resume").getPublicUrl(fileName);
+
+    if (await canLaunchUrl(Uri.parse(fileUrl))) {
+      await launchUrl(Uri.parse(fileUrl), mode: LaunchMode.externalApplication);
+    } else {
+      log("Could not launch URL");
+    }
   }
 }

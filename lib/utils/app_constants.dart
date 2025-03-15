@@ -13,6 +13,6 @@ class AppConstants {
   static const double bodyDesktop = 16.0;
   static const double bodyMobile = 14.0;
 
-  static String get url => dotenv.env['SUPABASE_URL'] ?? '';
-  static String get anonKey => dotenv.env['SUPABASE_ANON_KEY'] ?? '';
+  static String get url => dotenv.env['SUPABASE_URL']!;
+  static String get anonKey => dotenv.env['SUPABASE_ANON_KEY']!;
 }
