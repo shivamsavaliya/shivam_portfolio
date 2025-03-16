@@ -1,4 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AppConstants {
   static const double mobileBreakpoint = 600;
@@ -15,4 +16,6 @@ class AppConstants {
 
   static String get url => dotenv.env['SUPABASE_URL']!;
   static String get anonKey => dotenv.env['SUPABASE_ANON_KEY']!;
+
+  static final supabase = Supabase.instance.client;
 }

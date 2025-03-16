@@ -5,11 +5,9 @@ import 'package:shivam_portfolio/utils/app_constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  await dotenv.load(fileName: '.env');
-  await Supabase.initialize(
-    url: AppConstants.url,
-    anonKey: AppConstants.anonKey,
-  );
+//  await dotenv.load(fileName: '.env');
+
+  AppConstants.supabase;
   runApp(MyApp());
 }
 

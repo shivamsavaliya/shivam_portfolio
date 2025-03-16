@@ -1,10 +1,11 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../utils/app_constants.dart';
 
 class IntroController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -53,10 +54,9 @@ class IntroController extends GetxController
   }
 
   void downloadResume() async {
-    final supabase = Supabase.instance.client;
     final String fileName = "ShivamResume.pdf";
     final String fileUrl =
-        supabase.storage.from("resume").getPublicUrl(fileName);
+        AppConstants.supabase.storage.from("resume").getPublicUrl(fileName);
 
     if (await canLaunchUrl(Uri.parse(fileUrl))) {
       await launchUrl(Uri.parse(fileUrl), mode: LaunchMode.externalApplication);
