@@ -17,17 +17,18 @@ class IntroWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       key: scrollKey,
-      height: ResponsiveLayout.getScreenHeight(context).clamp(100, 800),
+      height: ResponsiveLayout.getScreenHeight(context),
       width: ResponsiveLayout.getScreenWidth(context),
       child: ResponsiveLayout.isMobile(context)
-          ? Container(
-              margin: const EdgeInsets.only(top: 100),
-              child: Column(
-                children: [
-                  _buildProfileImage(),
-                  _buildContent(context),
-                ],
-              ),
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CircleAvatar(
+                  radius: 130,
+                  backgroundImage: AssetImage('images/profile.png'),
+                ),
+                _buildContent(context),
+              ],
             )
           : Stack(
               children: [

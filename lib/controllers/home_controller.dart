@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../utils/responsive_layout.dart';
 
 class HomeController extends GetxController {
   final infoWidget = GlobalKey().obs;
@@ -12,5 +13,9 @@ class HomeController extends GetxController {
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
     );
+  }
+
+  bool isMobile() {
+    return ResponsiveLayout.isMobile(Get.context!);
   }
 }

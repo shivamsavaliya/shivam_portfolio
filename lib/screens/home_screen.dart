@@ -21,44 +21,28 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: ResponsiveLayout.responsivePadding(context),
-            child: ResponsiveLayout.buildResponsive(
-              context: context,
-              mobile: _buildMobileLayout(),
-              desktop: _buildDesktopLayout(),
-            ),
-          ),
+              padding: ResponsiveLayout.responsivePadding(context),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  IntroWidget(scrollKey: controller.introWidget.value),
+                  InfoWidget(scrollKey: controller.infoWidget.value),
+                  TechWidget(scrollKey: controller.techWidget.value),
+                ],
+              )),
         ),
-        floatingActionButton: Header(
-          onProjectTap: () =>
-              controller.scrollToInfo(controller.infoWidget.value),
-          onPorfolioTap: () =>
-              controller.scrollToInfo(controller.introWidget.value),
-          onTechTap: () => controller.scrollToInfo(controller.techWidget.value),
-        ),
+        floatingActionButton: ResponsiveLayout.isDesktop(context)
+            ? Header(
+                onProjectTap: () =>
+                    controller.scrollToInfo(controller.infoWidget.value),
+                onPorfolioTap: () =>
+                    controller.scrollToInfo(controller.introWidget.value),
+                onTechTap: () =>
+                    controller.scrollToInfo(controller.techWidget.value),
+              )
+            : Container(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       ),
-    );
-  }
-
-  Widget _buildDesktopLayout() {
-    return Column(
-      children: [
-        IntroWidget(scrollKey: controller.introWidget.value),
-        InfoWidget(scrollKey: controller.infoWidget.value),
-        TechWidget(scrollKey: controller.techWidget.value),
-      ],
-    );
-  }
-
-  Widget _buildMobileLayout() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        IntroWidget(scrollKey: controller.introWidget.value),
-        InfoWidget(scrollKey: controller.infoWidget.value),
-        TechWidget(scrollKey: controller.techWidget.value),
-      ],
     );
   }
 }

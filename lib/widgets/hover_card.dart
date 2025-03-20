@@ -34,6 +34,7 @@ class HoverCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
+              padding: const EdgeInsets.all(20),
               key: scrollKey,
               decoration: BoxDecoration(
                 color: AppColors.bgColor,

@@ -12,11 +12,6 @@ class DataRepo {
       content: "Bachelor's in Computer Engineering",
       time: '2020-2023',
     ),
-    DataModel(
-      title: 'Government Polytechnic Ahmedabad, India',
-      content: "Diploma in Computer Engineering",
-      time: '2017-2020',
-    ),
   ];
 
   static final List<DataModel> headerData = [
@@ -24,19 +19,22 @@ class DataRepo {
     DataModel(title: 'Technologies'),
     DataModel(title: 'About me'),
   ];
+
   static final List<DataModel> projectData = [
     DataModel(
       title: 'Wattvita',
       content:
-          'A Flutter app for a startup that provides a platform for users to buy and sell used electronic devices.',
+          "Designed the UI for WattVita, a smart home app built with Flutter using Provider for state management. Implemented features such as WiFi status check, interactive graphs for data visualization, a clean and intuitive interface, and a QR scanner for enhanced functionality.",
     ),
     DataModel(
-      title: 'udhariPe',
-      content: 'A Flutter app for managing debts.',
+      title: 'UdhariPe',
+      content:
+          "Designed a responsive UI for UdhariPe, a financial app built with Flutter. Integrated a gauge tracker to monitor user's finances, along with user profile, notifications, transaction history, and authentication screens. Added a QR code scanning feature for seamless transactions, enhancing usability and convenience.",
     ),
     DataModel(
-      title: 'Chatnet',
-      content: 'A Flutter app for chatting.',
+      title: 'Charnet',
+      content:
+          "A mobile app available on the App Store for locating nearby EV charging stations and viewing rates. Implemented WebSocket for real-time station availability and pricing updates. Integrated a secure payment gateway for seamless transactions and an automated invoicing system to generate receipts, enhancing the user experience.",
     ),
   ];
 }

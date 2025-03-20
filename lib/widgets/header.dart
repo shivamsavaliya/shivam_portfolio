@@ -59,7 +59,13 @@ class Header extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: GestureDetector(
-                            onTap: onProjectTap,
+                            onTap: () {
+                              if (key == 0) {
+                                onProjectTap!();
+                              } else if (key == 1) {
+                                onTechTap!();
+                              }
+                            },
                             child: Text(
                               value.title,
                               style: TextStyle(
