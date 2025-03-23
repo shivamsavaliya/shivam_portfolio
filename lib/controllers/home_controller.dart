@@ -6,6 +6,7 @@ class HomeController extends GetxController {
   final infoWidget = GlobalKey().obs;
   final introWidget = GlobalKey().obs;
   final techWidget = GlobalKey().obs;
+  final aboutWidget = GlobalKey().obs;
 
   void scrollToInfo(GlobalKey key) {
     Scrollable.ensureVisible(

@@ -42,7 +42,6 @@ dependencies:
   flutter_svg: ^2.0.17
   url_launcher: ^6.3.1
   device_frame: ^1.2.0
-  scroll_loop_auto_scroll: ^0.0.5
 
 dev_dependencies:
   flutter_test:

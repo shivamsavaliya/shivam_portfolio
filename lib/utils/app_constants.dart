@@ -18,4 +18,8 @@ class AppConstants {
   static String get anonKey => dotenv.env['SUPABASE_ANON_KEY']!;
 
   static final supabase = Supabase.instance.client;
+
+  static const String githubUrl = 'https://github.com/YourUsername';
+  static const String linkedinUrl = 'https://linkedin.com/in/YourUsername';
+  static const String emailUrl = 'mailto:your.email@gmail.com';
 }

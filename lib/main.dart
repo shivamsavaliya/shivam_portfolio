@@ -10,6 +10,7 @@ void main() async {
     url: AppConstants.url,
     anonKey: AppConstants.anonKey,
   );
+
   AppConstants.supabase;
   runApp(MyApp());
 }

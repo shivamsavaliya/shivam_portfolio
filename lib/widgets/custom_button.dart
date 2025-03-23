@@ -47,7 +47,7 @@ class CustomButton extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                     fontSize: ResponsiveLayout.responsiveValue(
                       context: context,
-                      desktop: 14,
+                      desktop: 16,
                       mobile: 10,
                     ),
                   ),

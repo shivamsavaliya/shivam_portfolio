@@ -7,9 +7,14 @@ class Header extends StatelessWidget {
   final VoidCallback? onProjectTap;
   final VoidCallback? onPorfolioTap;
   final VoidCallback? onTechTap;
+  final VoidCallback? onAboutTap;
 
   const Header(
-      {super.key, this.onProjectTap, this.onPorfolioTap, this.onTechTap});
+      {super.key,
+      this.onProjectTap,
+      this.onPorfolioTap,
+      this.onTechTap,
+      this.onAboutTap});
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +69,8 @@ class Header extends StatelessWidget {
                                 onProjectTap!();
                               } else if (key == 1) {
                                 onTechTap!();
+                              } else if (key == 2) {
+                                onAboutTap!();
                               }
                             },
                             child: Text(

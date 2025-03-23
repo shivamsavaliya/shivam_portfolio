@@ -9,7 +9,9 @@ import '../utils/responsive_layout.dart';
 
 class IntroWidget extends StatelessWidget {
   final GlobalKey? scrollKey;
-  IntroWidget({super.key, this.scrollKey});
+  IntroWidget({super.key, this.scrollKey}) {
+    Get.put(IntroController());
+  }
 
   final IntroController controller = Get.put(IntroController());
 
@@ -56,16 +58,8 @@ class IntroWidget extends StatelessWidget {
         desktop: 100,
         mobile: 0,
       ),
-      child: MouseRegion(
-        onEnter: (_) {
-          controller.hoverAnimate.value = true;
-          controller.startAnimations();
-        },
-        onExit: (_) {
-          controller.hoverAnimate.value = false;
-          controller.stopAnimations();
-        },
-        child: AnimatedBuilder(
+      child: GetBuilder<IntroController>(
+        builder: (controller) => AnimatedBuilder(
           animation: controller.rotationController,
           builder: (context, child) {
             return Transform.scale(
@@ -107,43 +101,33 @@ class IntroWidget extends StatelessWidget {
     return Positioned(
       right: 10,
       top: 100,
-      child: MouseRegion(
-        onEnter: (_) {
-          controller.hoverAnimate.value = true;
-          controller.startAnimations();
-        },
-        onExit: (_) {
-          controller.hoverAnimate.value = false;
-          controller.stopAnimations();
-        },
-        child: AnimatedBuilder(
-          animation: controller.rotationController,
-          builder: (context, child) {
-            return Transform.scale(
-              scale: controller.scaleAnimation.value,
-              child: Transform.rotate(
-                angle: controller.rotationAnimation.value,
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: AppColors.cyan,
-                        blurRadius: 50,
-                        spreadRadius: 1,
-                      )
-                    ],
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.transparent),
-                    gradient: LinearGradient(colors: AppColors.colorizeColors),
-                  ),
+      child: AnimatedBuilder(
+        animation: controller.rotationController,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: controller.scaleAnimation.value,
+            child: Transform.rotate(
+              angle: controller.rotationAnimation.value,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.cyan,
+                      blurRadius: 50,
+                      spreadRadius: 1,
+                    )
+                  ],
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.transparent),
+                  gradient: LinearGradient(colors: AppColors.colorizeColors),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
