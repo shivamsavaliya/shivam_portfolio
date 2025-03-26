@@ -41,16 +41,19 @@ class Header extends StatelessWidget {
             color: Colors.white.withValues(alpha: 0.08),
             child: Row(
               children: [
-                GestureDetector(
-                  onTap: onPorfolioTap,
-                  child: Text(
-                    "S.S. Portfolio",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ResponsiveLayout.responsiveValue(
-                        context: context,
-                        desktop: 26,
-                        mobile: 14,
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: onPorfolioTap,
+                    child: Text(
+                      "S.S. Portfolio",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: ResponsiveLayout.responsiveValue(
+                          context: context,
+                          desktop: 26,
+                          mobile: 14,
+                        ),
                       ),
                     ),
                   ),
@@ -63,24 +66,27 @@ class Header extends StatelessWidget {
                         key,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              if (key == 0) {
-                                onProjectTap!();
-                              } else if (key == 1) {
-                                onTechTap!();
-                              } else if (key == 2) {
-                                onAboutTap!();
-                              }
-                            },
-                            child: Text(
-                              value.title,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: ResponsiveLayout.responsiveValue(
-                                  context: context,
-                                  desktop: 14,
-                                  mobile: 8,
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (key == 0) {
+                                  onProjectTap!();
+                                } else if (key == 1) {
+                                  onTechTap!();
+                                } else if (key == 2) {
+                                  onAboutTap!();
+                                }
+                              },
+                              child: Text(
+                                value.title,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: ResponsiveLayout.responsiveValue(
+                                    context: context,
+                                    desktop: 14,
+                                    mobile: 8,
+                                  ),
                                 ),
                               ),
                             ),

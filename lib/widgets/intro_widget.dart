@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shivam_portfolio/controllers/intro_controller.dart';
@@ -9,13 +8,11 @@ import '../utils/responsive_layout.dart';
 
 class IntroWidget extends StatelessWidget {
   final GlobalKey? scrollKey;
-  IntroWidget({super.key, this.scrollKey}) {
-    Get.put(IntroController());
-  }
+  IntroWidget({super.key, this.scrollKey});
+  final IntroController controller =
+      Get.put(IntroController(), permanent: false);
 
-  final IntroController controller = Get.put(IntroController());
-
-  @override
+  @override // Use lazy put to ensure controller is available
   Widget build(BuildContext context) {
     return SizedBox(
       key: scrollKey,
@@ -51,6 +48,11 @@ class IntroWidget extends StatelessWidget {
       mobile: 0,
     );
 
+    BoxDecoration borderDecoration = BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(width: 1, color: Colors.white),
+    );
+
     return Positioned(
       right: ResponsiveLayout.isMobile(context) ? 0 : 20,
       top: ResponsiveLayout.responsiveValue(
@@ -59,8 +61,14 @@ class IntroWidget extends StatelessWidget {
         mobile: 0,
       ),
       child: GetBuilder<IntroController>(
+        id: 'outer_circle', // Add ID to prevent unnecessary rebuilds
         builder: (controller) => AnimatedBuilder(
           animation: controller.rotationController,
+          child: Container(
+            width: 400,
+            height: 400,
+            decoration: borderDecoration,
+          ),
           builder: (context, child) {
             return Transform.scale(
               scale: controller.scaleAnimation.value,
@@ -79,14 +87,7 @@ class IntroWidget extends StatelessWidget {
                       return SweepGradient(colors: AppColors.colorizeColors)
                           .createShader(bounds);
                     },
-                    child: Container(
-                      width: 400,
-                      height: 400,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 1, color: Colors.white),
-                      ),
-                    ),
+                    child: child,
                   ),
                 ),
               ),
@@ -98,36 +99,43 @@ class IntroWidget extends StatelessWidget {
   }
 
   Widget _buildInnerCircle() {
+    const innerCircleSize = 120.0;
+
+    final boxDecoration = BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: AppColors.cyan,
+          blurRadius: 50,
+          spreadRadius: 1,
+        )
+      ],
+      shape: BoxShape.circle,
+      border: Border.all(color: Colors.transparent),
+      gradient: LinearGradient(colors: AppColors.colorizeColors),
+    );
+
     return Positioned(
       right: 10,
       top: 100,
-      child: AnimatedBuilder(
-        animation: controller.rotationController,
-        builder: (context, child) {
-          return Transform.scale(
-            scale: controller.scaleAnimation.value,
-            child: Transform.rotate(
-              angle: controller.rotationAnimation.value,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.cyan,
-                      blurRadius: 50,
-                      spreadRadius: 1,
-                    )
-                  ],
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.transparent),
-                  gradient: LinearGradient(colors: AppColors.colorizeColors),
-                ),
+      child: GetBuilder<IntroController>(
+        id: 'inner_circle', // Add ID to prevent unnecessary rebuilds
+        builder: (controller) => AnimatedBuilder(
+          animation: controller.rotationController,
+          child: Container(
+            width: innerCircleSize,
+            height: innerCircleSize,
+            decoration: boxDecoration,
+          ),
+          builder: (context, child) {
+            return Transform.scale(
+              scale: controller.scaleAnimation.value,
+              child: Transform.rotate(
+                angle: controller.rotationAnimation.value,
+                child: child,
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -184,7 +192,7 @@ class IntroWidget extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            "Flutter Developer passionate about building beautiful apps for ",
+            "Flutter Developer passionate about building beautiful apps for Android, iOS and Web",
             softWrap: true,
             style: TextStyle(
               fontSize: ResponsiveLayout.responsiveValue(
@@ -195,34 +203,14 @@ class IntroWidget extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          AnimatedTextKit(
-            repeatForever: true,
-            animatedTexts: [
-              ColorizeAnimatedText(
-                'Android',
-                colors: AppColors.colorizeColors,
-                textStyle: _getAnimatedTextStyle(context),
-              ),
-              ColorizeAnimatedText(
-                'iOS',
-                colors: AppColors.colorizeColors,
-                textStyle: _getAnimatedTextStyle(context),
-              ),
-              ColorizeAnimatedText(
-                'Web',
-                colors: AppColors.colorizeColors,
-                textStyle: _getAnimatedTextStyle(context),
-              ),
-            ],
-          ),
           SizedBox(height: 20),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "I enjoy building great apps using Flutter. I'm really good at managing how things work and making designs that fit any screen. I've finished lots of projects that show how creative and helpful I can be.",
+              "I enjoy building great apps using Flutter. I'm really good at managing how things work and making designs that fit any screen. I've finished lots of projects that show how creative and helpful I can be",
               softWrap: true,
               style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.5),
+                  color: Colors.white.withOpacity(0.5),
                   fontSize: ResponsiveLayout.responsiveValue(
                     context: context,
                     desktop: 14,
@@ -239,17 +227,4 @@ class IntroWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-TextStyle _getAnimatedTextStyle(BuildContext context) {
-  return TextStyle(
-    fontSize: ResponsiveLayout.responsiveValue(
-      context: context,
-      desktop: 30,
-      mobile: 20,
-    ),
-    color: AppColors.cyan,
-    height: -1,
-    letterSpacing: 0,
-  );
 }
