@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tilt/flutter_tilt.dart';
 import 'package:get/get.dart';
 import 'package:shivam_portfolio/controllers/home_controller.dart';
 import 'package:shivam_portfolio/utils/app_colors.dart';
@@ -22,16 +23,17 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-              padding: ResponsiveLayout.responsivePadding(context),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  IntroWidget(scrollKey: controller.introWidget.value),
-                  InfoWidget(scrollKey: controller.infoWidget.value),
-                  TechWidget(scrollKey: controller.techWidget.value),
-                  AboutWidget(scrollKey: controller.aboutWidget.value),
-                ],
-              )),
+            padding: ResponsiveLayout.responsivePadding(context),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                IntroWidget(scrollKey: controller.introWidget.value),
+                InfoWidget(scrollKey: controller.infoWidget.value),
+                TechWidget(scrollKey: controller.techWidget.value),
+                AboutWidget(scrollKey: controller.aboutWidget.value),
+              ],
+            ),
+          ),
         ),
         floatingActionButton: ResponsiveLayout.isDesktop(context)
             ? Header(

@@ -64,6 +64,22 @@ class InfoWidget extends StatelessWidget {
     );
   }
 
+  //  controller.isHovered
+  //                 ? Center(
+  //                     child: Text(
+  //                     "Click to view",
+  //                     style: TextStyle(
+  //                       fontSize: ResponsiveLayout.responsiveValue(
+  //                         context: context,
+  //                         desktop: 30,
+  //                         mobile: 16,
+  //                       ),
+  //                       fontWeight: FontWeight.w600,
+  //                       color: Colors.white,
+  //                     ),
+  //                   ))
+  //                 :
+
   Future<dynamic> appImageDialog(BuildContext context, String folderName) {
     return showAdaptiveDialog(
       context: context,

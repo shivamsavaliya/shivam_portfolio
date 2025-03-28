@@ -34,7 +34,7 @@ class DataRepo {
     DataModel(
       title: 'Charnet',
       content:
-          "A mobile app available on the App Store for locating nearby EV charging stations and viewing rates. Implemented WebSocket for real-time station availability and pricing updates. Integrated a secure payment gateway for seamless transactions and an automated invoicing system to generate receipts, enhancing the user experience.",
+          "A mobile app available on the AppAdvice for locating nearby EV charging stations and viewing rates. Implemented WebSocket for real-time station availability and pricing updates. Integrated a secure payment gateway for seamless transactions and an automated invoicing system to generate receipts, enhancing the user experience.",
     ),
   ];
 }

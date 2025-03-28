@@ -19,7 +19,11 @@ class AppConstants {
 
   static final supabase = Supabase.instance.client;
 
-  static const String githubUrl = 'https://github.com/YourUsername';
-  static const String linkedinUrl = 'https://linkedin.com/in/YourUsername';
-  static const String emailUrl = 'mailto:your.email@gmail.com';
+  static const String githubUrl = 'https://github.com/shivamsavaliya';
+  static const String linkedinUrl =
+      'https://www.linkedin.com/in/shivam-savaliya/';
+  static const String emailUrl = 'mailto:savaliyashivam2002@gmail.com';
+
+  static const String aboutMe =
+      "I am a passionate Flutter Developer with expertise in building dynamic, scalable and high-performance cross-platform applications. With hands-on experience in state management (GetX, BLoC, Provider), responsive UI and REST API integration, I create seamless user experiences. I also have a strong background in working with databases (SQL, Firebase) and WebSockets for real-time communication.\n\nI have developed multiple applications and have experience deploying apps on both the App Store(TestFlight) and Play Store. My problem-solving skills and dedication to clean, maintainable code allow me to bring ideas to life efficiently.\n\nI am currently pursuing a Master's in Computer Science at DePaul University, where I am expanding my knowledge in software development, databases and advanced computing concepts.";
 }
