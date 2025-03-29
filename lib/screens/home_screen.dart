@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tilt/flutter_tilt.dart';
 import 'package:get/get.dart';
 import 'package:shivam_portfolio/controllers/home_controller.dart';
 import 'package:shivam_portfolio/utils/app_colors.dart';

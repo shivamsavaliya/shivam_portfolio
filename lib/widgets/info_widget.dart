@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:shivam_portfolio/controllers/home_controller.dart';
@@ -126,7 +127,7 @@ class InfoWidget extends StatelessWidget {
                   smallMobile: 350,
                 ),
                 child: DeviceFrame(
-                  device: Devices.android.onePlus8Pro,
+                  device: Devices.ios.iPhone13,
                   screen: SizedBox(
                     width: double.maxFinite,
                     height: double.maxFinite,
@@ -137,21 +138,15 @@ class InfoWidget extends StatelessWidget {
                       itemCount: folderImages.length,
                       itemBuilder: (context, index) {
                         return Center(
-                          child: Image.network(
-                            folderImages[index],
+                          child: CachedNetworkImage(
+                            imageUrl: folderImages[index],
+                            placeholder: (context, url) =>
+                                Center(child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                Center(child: Icon(Icons.error)),
                             fit: BoxFit.cover,
                             width: double.infinity,
                             height: double.infinity,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) {
-                                return child;
-                              }
-                              return Center(child: CircularProgressIndicator());
-                            },
-                            errorBuilder: (context, error, stackTrace) {
-                              return Center(
-                                  child: Text('Failed to load image'));
-                            },
                           ),
                         );
                       },
