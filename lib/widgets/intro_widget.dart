@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shivam_portfolio/controllers/intro_controller.dart';
@@ -12,8 +13,9 @@ class IntroWidget extends StatelessWidget {
   final IntroController controller =
       Get.put(IntroController(), permanent: false);
 
-  @override // Use lazy put to ensure controller is available
+  @override
   Widget build(BuildContext context) {
+    controller.fetchProfile();
     return SizedBox(
       key: scrollKey,
       height: ResponsiveLayout.getScreenHeight(context),
@@ -22,9 +24,13 @@ class IntroWidget extends StatelessWidget {
           ? Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(
-                  radius: 130,
-                  backgroundImage: AssetImage('images/profile.png'),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(300),
+                  child: CachedNetworkImage(
+                    imageUrl: controller.profilePic,
+                    width: 300,
+                    height: 300,
+                  ),
                 ),
                 _buildContent(context),
               ],
@@ -61,7 +67,7 @@ class IntroWidget extends StatelessWidget {
         mobile: 0,
       ),
       child: GetBuilder<IntroController>(
-        id: 'outer_circle', // Add ID to prevent unnecessary rebuilds
+        id: 'outer_circle',
         builder: (controller) => AnimatedBuilder(
           animation: controller.rotationController,
           child: Container(
@@ -118,7 +124,7 @@ class IntroWidget extends StatelessWidget {
       right: 10,
       top: 100,
       child: GetBuilder<IntroController>(
-        id: 'inner_circle', // Add ID to prevent unnecessary rebuilds
+        id: 'inner_circle',
         builder: (controller) => AnimatedBuilder(
           animation: controller.rotationController,
           child: Container(
@@ -141,12 +147,16 @@ class IntroWidget extends StatelessWidget {
   }
 
   Widget _buildProfileImage() {
-    return const Positioned(
+    return Positioned(
       top: 90,
-      right: 80,
-      child: CircleAvatar(
-        radius: 130,
-        backgroundImage: AssetImage('images/profile.png'),
+      right: 50,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(300),
+        child: CachedNetworkImage(
+          imageUrl: controller.profilePic,
+          width: 300,
+          height: 300,
+        ),
       ),
     );
   }
@@ -210,7 +220,7 @@ class IntroWidget extends StatelessWidget {
               "I enjoy building great apps using Flutter. I'm really good at managing how things work and making designs that fit any screen. I've finished lots of projects that show how creative and helpful I can be",
               softWrap: true,
               style: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
+                  color: Colors.white.withValues(alpha: 0.5),
                   fontSize: ResponsiveLayout.responsiveValue(
                     context: context,
                     desktop: 14,

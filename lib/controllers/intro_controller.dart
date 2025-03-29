@@ -9,6 +9,7 @@ class IntroController extends GetxController
   late AnimationController rotationController;
   late Animation<double> rotationAnimation;
   late Animation<double> scaleAnimation;
+  String profilePic = '';
 
   @override
   void onInit() {
@@ -59,5 +60,10 @@ class IntroController extends GetxController
     } else {
       log("Could not launch URL");
     }
+  }
+
+  void fetchProfile() async {
+    final supabase = AppConstants.supabase.storage;
+    profilePic = supabase.from('resume').getPublicUrl('profile.png');
   }
 }

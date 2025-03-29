@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mouse_follower/mouse_follower.dart';
 import 'package:shivam_portfolio/screens/home_screen.dart';
 import 'package:shivam_portfolio/utils/app_constants.dart';
+import 'package:shivam_portfolio/utils/responsive_layout.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MouseFollower(
         defaultMouseCursor: MouseCursor.uncontrolled,
+        isVisible: ResponsiveLayout.isDesktop(context) ? true : false,
         mouseStylesStack: [
           MouseStyle(
             size: const Size(26, 26),
