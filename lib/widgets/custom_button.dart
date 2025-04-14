@@ -16,18 +16,17 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: ResponsiveLayout.responsiveValue(
-          context: context, desktop: 80, mobile: 50, tablet: 60),
+          context: context, desktop: 50, mobile: 30),
       width: ResponsiveLayout.responsiveValue(
-          context: context, desktop: 200, mobile: 100, tablet: 150),
+          context: context, desktop: 180, mobile: 100),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
-          gradient: LinearGradient(colors: AppColors.colorizeColors),
+          borderRadius: BorderRadius.circular(4),
+          color: AppColors.purple,
           boxShadow: [
             BoxShadow(
-              blurRadius: 20,
               color: AppColors.cyan,
-              spreadRadius: -5,
-              offset: Offset(0, 5),
+              spreadRadius: 0.2,
+              offset: Offset(4, 4),
             ),
           ]),
       child: ClipRRect(

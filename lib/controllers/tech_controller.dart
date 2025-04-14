@@ -1,7 +1,7 @@
+import 'dart:async';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:shivam_portfolio/models/svgimage_model.dart';
-
 import '../utils/app_constants.dart';
 
 class TechController extends GetxController {

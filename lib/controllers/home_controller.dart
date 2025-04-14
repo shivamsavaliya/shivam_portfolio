@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shivam_portfolio/controllers/tech_controller.dart';
+import '../models/svgimage_model.dart';
 import '../utils/responsive_layout.dart';
 
 class HomeController extends GetxController {
