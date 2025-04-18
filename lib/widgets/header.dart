@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shivam_portfolio/repo/data_repo.dart';
 import 'package:shivam_portfolio/utils/app_colors.dart';
