@@ -4,17 +4,11 @@ import 'package:shivam_portfolio/utils/app_colors.dart';
 import '../utils/responsive_layout.dart';
 
 class Header extends StatelessWidget {
+  final VoidCallback? onHomeTap;
   final VoidCallback? onProjectTap;
-  final VoidCallback? onPorfolioTap;
-  final VoidCallback? onTechTap;
   final VoidCallback? onAboutTap;
 
-  const Header(
-      {super.key,
-      this.onProjectTap,
-      this.onPorfolioTap,
-      this.onTechTap,
-      this.onAboutTap});
+  const Header({super.key, this.onHomeTap, this.onProjectTap, this.onAboutTap});
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +27,14 @@ class Header extends StatelessWidget {
             children: [
               MouseRegion(
                 cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: onPorfolioTap,
-                  child: Text(
-                    "S.S. Portfolio",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ResponsiveLayout.responsiveValue(
-                        context: context,
-                        desktop: 26,
-                        mobile: 14,
-                      ),
+                child: Text(
+                  "S.S. Portfolio",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: ResponsiveLayout.responsiveValue(
+                      context: context,
+                      desktop: 26,
+                      mobile: 14,
                     ),
                   ),
                 ),
@@ -61,9 +52,9 @@ class Header extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               if (key == 0) {
-                                onProjectTap!();
+                                onHomeTap!();
                               } else if (key == 1) {
-                                onTechTap!();
+                                onProjectTap!();
                               } else if (key == 2) {
                                 onAboutTap!();
                               }

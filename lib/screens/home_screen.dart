@@ -28,7 +28,9 @@ class HomeScreen extends StatelessWidget {
               children: [
                 IntroWidget(scrollKey: controller.introWidget.value),
                 InfoWidget(scrollKey: controller.infoWidget.value),
-                TechWidget(scrollKey: controller.techWidget.value),
+                ResponsiveLayout.isMobile(context)
+                    ? TechWidget(scrollKey: controller.techWidget.value)
+                    : Container(),
                 AboutWidget(scrollKey: controller.aboutWidget.value),
               ],
             ),
@@ -38,10 +40,8 @@ class HomeScreen extends StatelessWidget {
             ? Header(
                 onProjectTap: () =>
                     controller.scrollToInfo(controller.infoWidget.value),
-                onPorfolioTap: () =>
+                onHomeTap: () =>
                     controller.scrollToInfo(controller.introWidget.value),
-                onTechTap: () =>
-                    controller.scrollToInfo(controller.techWidget.value),
                 onAboutTap: () =>
                     controller.scrollToInfo(controller.aboutWidget.value),
               )

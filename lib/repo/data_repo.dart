@@ -15,8 +15,8 @@ class DataRepo {
   ];
 
   static final List<DataModel> headerData = [
-    DataModel(title: 'Projects'),
-    DataModel(title: 'Technologies'),
+    DataModel(title: 'Home'),
+    DataModel(title: 'Project'),
     DataModel(title: 'About me'),
   ];
 
